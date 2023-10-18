@@ -1,0 +1,9 @@
+from time import time_function
+
+@main = ||
+  time_function ||
+    result = 1..1000
+      .keep |n| n % 3 == 0 or n % 5 == 0
+      .sum()
+    print 'result: $result'
+    assert_eq result, 233168

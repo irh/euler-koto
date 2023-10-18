@@ -1,0 +1,6 @@
+from os import start_timer
+
+export time_function = |f|
+  t = start_timer()
+  f()
+  print 'elapsed: {:.2}ms', t.elapsed() * 1000

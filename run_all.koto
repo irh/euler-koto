@@ -1,0 +1,11 @@
+problems = 3
+
+t = os.start_timer()
+
+for problem in 1..=problems
+  print "Problem $problem"
+  import "${string.format '{:0>2}', problem}"
+  print ""
+
+print "Success!"
+print '{:.3}s', t.elapsed()

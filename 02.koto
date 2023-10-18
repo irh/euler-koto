@@ -1,0 +1,25 @@
+from time import time_function
+
+fibonacci = ||
+  a, b, c = 1, 1, 1
+  loop
+    yield c
+    c = a + b
+    a, b = b, c
+
+@main = ||
+  time_function ||
+    result = fibonacci()
+      .take |n| n < 4000000
+      .keep |n| n % 2 == 0
+      .sum()
+
+    print 'result: $result'
+    assert_eq result, 4613732
+
+@tests =
+  @test fibonacci: ||
+    first_six = fibonacci()
+      .take 6
+      .to_tuple()
+    assert_eq first_six, (1, 2, 3, 5, 8, 13)

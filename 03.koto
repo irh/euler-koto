@@ -1,0 +1,39 @@
+# The prime factors of 13195 are 5, 7, 13, and 29.
+# What is the largest prime factor of the number 600851475143?
+
+from time import time_function
+
+prime_candidates = |n|
+  for i in (5..n.sqrt()).step 6
+    yield i
+    yield i + 2
+
+is_prime = |n|
+  switch
+    n % 2 == 0 or n <= 1 then false
+    n == 3 then true
+    else
+      for i in prime_candidates n
+        if n % i == 0
+          return false
+      true
+
+prime_factors = |n|
+  if n % 2 == 0
+    yield 2
+  if n % 3 == 0
+    yield 3
+  for i in prime_candidates n
+    if n % i == 0 and is_prime i
+      yield i
+
+@main = ||
+  time_function ||
+    result = (prime_factors 600851475143).last()
+    print 'result: $result'
+    assert_eq result, 6857
+
+@tests =
+  @test factors_13195: ||
+    result = (prime_factors 13195).to_tuple()
+    assert_eq result, (5, 7, 13, 29)
